@@ -6,15 +6,10 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + "/public"));
 
-app.get("/", (req, res) => {
-    res.render("index", {
-        titulo: "mi titulo dynamic"
-    })
-});
+// Rutas web
+app.use('/api', require('./router/RutasWeb'));
 
-//TODO imlementar las demas rutas
-
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404).render("404");
 });
 
